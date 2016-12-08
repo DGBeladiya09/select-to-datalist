@@ -9,7 +9,7 @@
   // Meta
   ProgDatalist.NS      = "ProgDatalist";
   ProgDatalist.AUTHOR  = "Scott O'Hara";
-  ProgDatalist.VERION  = "0.1.0";
+  ProgDatalist.VERION  = "0.1.1";
   ProgDatalist.LICENSE = "https://github.com/scottaohara/select-to-datalist/blob/master/LICENSE";
 
   var widget        = doc.querySelectorAll('[data-action="prog-datalist"]');
@@ -19,12 +19,13 @@
   ProgDatalist.create = function () {
 
     // setup / cache vars
-    var self,
-        selfID,
-        i;
+    var self;
+    var selfID;
+    var cleanup = true;
+    var i;
 
     // run a check to see if datalist is supported
-    if ('options' in document.createElement('datalist')) {
+    if ( 'options' in document.createElement('datalist') ) {
 
       // if supported, run through all instances of prog-datalist
       // and convert the select elements to inputs w/datalists
@@ -53,7 +54,6 @@
         // lost in the transfer...
         for ( var a = 0; a < el.attributes.length; a++ ) {
           var attr = el.attributes.item(a);
-
           newInput.setAttribute(attr.nodeName, attr.nodeValue);
         }
         // since this is a text input now, we also want to
@@ -96,11 +96,28 @@
         if ( self.hasAttribute('data-size') ) {
           var getSize = self.getAttribute('data-size');
           newInput.setAttribute('size', getSize);
+
+          if ( cleanup ) {
+            self.removeAttribute('data-size');
+          }
         }
 
         if ( self.hasAttribute('data-maxlength') ) {
           var getMax = self.getAttribute('data-maxlength');
           newInput.setAttribute('maxlength', getMax);
+
+          if ( cleanup ) {
+            self.removeAttribute('data-maxlength');
+          }
+        }
+
+        if ( self.hasAttribute('data-class') ) {
+          var getClass = self.getAttribute('data-class');
+          newInput.setAttribute('class', getClass);
+
+          if ( cleanup ) {
+            self.removeAttribute('data-class');
+          }
         }
 
       } // for(widgetCount)
@@ -119,5 +136,3 @@
   ProgDatalist.init();
 
 })( this, this.document );
-
-
