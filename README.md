@@ -44,3 +44,11 @@ to
 </label>
 ```
   
+  
+### License & Such
+
+This script was written by [Scott O'Hara](https://twitter.com/scottohara).
+
+It has an MIT license.
+
+Do with it what you will :)
