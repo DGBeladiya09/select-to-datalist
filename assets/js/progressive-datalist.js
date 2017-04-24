@@ -1,5 +1,4 @@
 ;(function ( w, doc ) {
-
   //enable strict mode
   'use strict';
 
@@ -17,7 +16,6 @@
 
   // Create accordion instances
   ProgDatalist.create = function () {
-
     // setup / cache vars
     var self;
     var selfID;
@@ -61,7 +59,6 @@
         // with the list attribute.
         newInput.setAttribute('type', 'text');
         newInput.setAttribute('list', genID);
-
 
         // create new datalist. Set its ID, and pull the
         // original select element's options into the new element
@@ -119,18 +116,13 @@
             self.removeAttribute('data-class');
           }
         }
-
       } // for(widgetCount)
-
     }
-
   }; // ProgDatalist.create()
 
 
   ProgDatalist.init = function () {
-
     ProgDatalist.create();
-
   }; // ProgDatalist.init()
 
   ProgDatalist.init();
